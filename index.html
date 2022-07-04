@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="cupcake">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
 
@@ -35,14 +34,14 @@
         </header>
 
         <div class="todos-filter">
-            <div class="dropdown">
+            <!-- <div class="dropdown">
                 <label tabindex="0" class="btn m-1">Filter</label>
                 <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
                     <li><a>All</a></li>
                     <li><a>Pending</a></li>
                     <li><a>Completed</a></li>
                 </ul>
-            </div>
+            </div> -->
 
             <button class="btn btn-secondary delete-all-btn">
                 Delete All
@@ -53,7 +52,22 @@
             
         </ul>
     </div>
+
+    <!--Theme switcher-->
+    <div class="theme-switcher">
+        <div class="dropdown dropdown-left">
+            <label tabindex="0" class="btn m-1">
+                <i class='bx bxs-palette bx-sm'></i>
+            </label>
+            <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 themes-list">
+                <li><a>cupcake</a></li>
+                <li><a>dark</a></li>
+                <li><a>light</a></li>
+            </ul>
+        </div>
+    </div>
     <!-- JS -->
     <script src="js/main.js"></script>
+    <script src="js/theme-switcher.js"></script>
 </body>
 </html>

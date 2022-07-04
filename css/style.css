@@ -14,6 +14,7 @@
 }
 
 body{
+    position: relative;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -128,4 +129,10 @@ header .input-section {
 
 .todo-actions button:not(:last-child){
     margin-right: 10px;
+}
+
+.theme-switcher{
+    position: absolute;
+    top: 16px;
+    right: 16px;
 }
