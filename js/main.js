@@ -98,7 +98,21 @@ function showAlertMessage(message, type) {
 function deleteTodo(id) {
     todos = todos.filter(todo => todo.id !== id);
     saveToLocalStorage();
+    showAlertMessage('Todo deleted successfully', 'success');
     showAllTodos();
+}
+
+//edit todo
+function editTodo(id) {
+    let todo = todos.find(todo => todo.id === id);
+    task_input.value = todo.task;
+    todos = todos.filter(todo => todo.id !== id);
+    add_btn.innerHTML = "<i class='bx bx-check bx-sm'></i>";
+    saveToLocalStorage();
+    add_btn.addEventListener('click', () => {
+        add_btn.innerHTML = "<i class='bx bx-plus bx-sm'></i>"; 
+        showAlertMessage('Todo updated successfully', 'success');
+    });
 }
 
 //clear all todos
