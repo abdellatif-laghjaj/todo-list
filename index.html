@@ -21,9 +21,17 @@
     <div class="container">
         <header>
             <h1>Todo List</h1>
+            <!-- Error message -->
+            <div class="alert alert-error shadow-lg mb-5 hide alert-message">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                  <span></span>
+                </div>
+            </div>
+
             <div class="input-section">
-                <input type="text" placeholder="Type here" class="input input-bordered input-secondary w-full max-w-xs" />
-                <button class="btn btn-info add-task-button">
+                <input type="text" placeholder="Add a todo . . ." class="input input-bordered input-secondary w-full max-w-xs" />
+                <button class="btn btn-secondary add-task-button">
                     <i data-feather="plus"></i>
                 </button>
             </div>
@@ -32,7 +40,7 @@
         <div class="todos-filter">
             <div class="filter-item">
                 <input type="radio" name="radio-3" class="radio radio-secondary" checked />
-                <span class="radio-text">All</span>
+                <span>All</span>
             </div>
 
             <div class="filter-item">
@@ -47,7 +55,7 @@
         </div>
 
         <div class="todos-list">
-            <div class="todo-item">
+            <!-- <div class="todo-item">
                 <p class="task-body">
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor, minus impedit
                 </p>
@@ -59,7 +67,7 @@
                         <i data-feather="trash-2"></i>
                     </button>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div
     <!-- JS -->
