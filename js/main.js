@@ -59,16 +59,16 @@ function showTodos() {
             todos_list.innerHTML += `
                 <div class="todo-item">
                     <div class="form-control mr-6">
-                        <input type="checkbox" class="checkbox checkbox-secondary checkbox-md" onclick="updateTodoStatus(this, todos)" id=${id}>
+                        <input type="checkbox" class="checkbox checkbox-secondary checkbox-md" onclick="updateTodoStatus(this)" id=${id}>
                     </div>
                     <p class="task-body">
                         ${todo.task}
                     </p>
                     <div class="todo-actions">
-                        <button class="btn btn-success" onclick="editTodo(${id})">
+                        <button class="btn btn-success" onclick="editTodo(this, todos)">
                             <i class="bx bx-edit-alt bx-sm"></i>
                         </button>
-                        <button class="btn btn-error" onclick="deleteTodo(${id})">
+                        <button class="btn btn-error" onclick="deleteTodo(this, todos)">
                             <i class="bx bx-trash bx-sm"></i>
                         </button>
                     </div>
@@ -79,11 +79,10 @@ function showTodos() {
 }
 
 //update todo status
-function updateTodoStatus(selected_checkbox, todos) {
+function updateTodoStatus(selected_checkbox) {
     //get the task paragraph
     let task_name = selected_checkbox.parentElement.parentElement.querySelector('.task-body');
-    //get the task index
-
+    
     //change the status of the selected task
     if (selected_checkbox.checked) {
         task_name.style.textDecoration = 'line-through';
@@ -94,21 +93,25 @@ function updateTodoStatus(selected_checkbox, todos) {
         task_name.style.opacity = '1';
         todos[selected_checkbox.id].status = 'pending';
     }
+    saveTodos(todos);
 }
 
 //delete todo
-function deleteTodo(todo_id) {
-    todos.splice(todo_id, 1);
+function deleteTodo(selected_btn, todos) {
+    todos.splice(selected_btn.id, 1);
     saveTodos(todos);
-    showTodos();
 }
 
 //edit todo
-function editTodo(todo_id) {
-    let task_name = todos[todo_id].task;
-    task_input.value = task_name;
+function editTodo(selected_btn, todos) {
+    let task_name = selected_btn.parentElement.parentElement.querySelector('.task-body');
+    const value = task_name.innerHTML;
+    task_name.value = value.trim();
     add_btn.innerHTML = '<i class="bx bx-check bx-sm"></i>';
-    deleteTodo(todo_id);
+    todos.splice(selected_btn.id, 1);
+    saveTodos(todos);
+    showTodos();
+    add_btn.innerHTML = '<i class="bx bx-plus bx-sm"></i>';
 }
 
 //delete all todos
