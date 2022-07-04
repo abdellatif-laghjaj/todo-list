@@ -4,13 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/output.css">
-    <title>Document</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!--- Tailwind CSS & Daisy UI CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.18.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet" type="text/css" />
+
+
+    <title>Todo List</title>
 </head>
 <body>
-    <button class="btn">Button</button>
-    <h1 class="text-black">
-        Hello World
-    </h1>
+    
+    <div class="container">
+        <header>
+            <h1>Todo List</h1>
+            <div class="input-section">
+                <input type="text" placeholder="Type here" class="input input-bordered input-secondary w-full max-w-xs" />
+                <button class="btn">
+                    <i data-feather="plus"></i>
+                </button>
+            </div>
+        </header>
+    </div
+    <!-- JS -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="js/main.js"></script>
+    <script>
+        feather.replace()
+    </script>
 </body>
 </html>
