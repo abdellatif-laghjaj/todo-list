@@ -3,6 +3,8 @@ const add_btn = document.querySelector('.add-task-button');
 const todos_list = document.querySelector('.todos-list');
 const alert_message = document.querySelector('.alert-message');
 const delete_all_btn = document.querySelector('.delete-all-btn');
+const delete_btns = document.querySelectorAll('.delete-btn');
+const edit_btns = document.querySelectorAll('.edit-btn');
 
 let todos = getTodos();
 showTodos();
@@ -69,10 +71,10 @@ function showTodos() {
                         ${todo.task}
                     </p>
                     <div class="todo-actions">
-                        <button class="btn btn-success">
+                        <button class="btn btn-success edit-btn" id="${id}">
                             <i class="bx bx-edit-alt bx-sm"></i>
                         </button>
-                        <button class="btn btn-error">
+                        <button class="btn btn-error delete-btn" id="${id}">
                             <i class="bx bx-trash bx-sm"></i>
                         </button>
                     </div>
@@ -83,22 +85,31 @@ function showTodos() {
 }
 
 //delete todo
-function deleteTodo(selected_btn, todos) {
-    todos.splice(selected_btn.id, 1);
+delete_btns.forEach((btn) => {
+    alert(btn.id);
+    btn.addEventListener('click', () => {
+        let id = btn.getAttribute('id');
+        alert(id)
+        deleteTodo(id);
+    });
+});
+
+//edit todo
+
+//function to delete todo
+function deleteTodo(id) {
+    todos.splice(id, 1);
     saveTodos(todos);
     showTodos();
 }
 
-//edit todo
-function editTodo(selected_btn, todos) {
-    let task_name = selected_btn.parentElement.parentElement.querySelector('.task-body');
-    const value = task_name.innerHTML;
-    task_name.value = value.trim();
-    add_btn.innerHTML = '<i class="bx bx-check bx-sm"></i>';
-    todos.splice(selected_btn.id, 1);
+//function to edit todo
+function editTodo(id) {
+    let todo = todos[id];
+    task_input.value = todo.task;
+    todos.splice(id, 1);
     saveTodos(todos);
     showTodos();
-    add_btn.innerHTML = '<i class="bx bx-plus bx-sm"></i>';
 }
 
 //delete all todos
@@ -106,6 +117,7 @@ function deleteAllTodos() {
     todos = [];
     saveTodos(todos);
     showTodos();
+    window.location.reload();
 }
 
 //check if todos are empty
