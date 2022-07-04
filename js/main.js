@@ -1,7 +1,7 @@
 const task_input = document.querySelector('input');
 const add_btn = document.querySelector('.add-task-button');
 const todos_list = document.querySelector('.todos-list');
-const todo_items = document.querySelectorAll('li');
+const todo_items = document.querySelectorAll('ul.todos-list li.todo-item');
 const alert_message = document.querySelector('.alert-message');
 const delete_all_btn = document.querySelector('.delete-all-btn');
 
@@ -57,10 +57,10 @@ function showAllTodos() {
                     ${todo.task}
                 </p>
                 <div class="todo-actions">
-                    <button class="btn btn-success">
+                    <button class="btn btn-success" onclick="editTodo('${todo.id}')">
                         <i class="bx bx-edit-alt bx-sm"></i>    
                     </button>
-                    <button class="btn btn-error">  
+                    <button class="btn btn-error" onclick="deleteTodo('${todo.id}')">
                         <i class="bx bx-trash bx-sm"></i>
                     </button>
                 </div>
@@ -94,29 +94,12 @@ function showAlertMessage(message, type) {
     }, 3000);
 }
 
-todo_items.forEach((todo_item) => {
-    //get data-id from each todo item
-    // let id = todo_item.getAttribute('data-id');
-   console.log(todo_item);
-});
-
-
 //delete todo
 function deleteTodo(id) {
-    todos = todos.slice().filter((todo) => todo.id !== id);
+    todos = todos.filter(todo => todo.id !== id);
     saveToLocalStorage();
     showAllTodos();
 }
-
-//edit todo
-function editTodo(id) {
-    let todo = todos.find((todo) => todo.id === id);
-    task_input.value = todo.task;
-    todos = todos.filter((todo) => todo.id !== id);
-    saveToLocalStorage();
-    showAllTodos();
-}
-
 
 //clear all todos
 function clearAllTodos() {
