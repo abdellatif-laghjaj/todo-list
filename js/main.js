@@ -116,8 +116,12 @@ function editTodo(id) {
 
 //clear all todos
 function clearAllTodos() {
-    todos = [];
-    saveToLocalStorage();
-    showAlertMessage('All todos cleared successfully', 'success');
-    showAllTodos();
+    if(todos.length > 0) {
+        todos = [];
+        saveToLocalStorage();
+        showAlertMessage('All todos cleared successfully', 'success');
+        showAllTodos();
+    }else{
+        showAlertMessage('No todos to clear', 'error');
+    }
 }
