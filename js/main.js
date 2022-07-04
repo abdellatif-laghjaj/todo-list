@@ -2,9 +2,13 @@ const task_input = document.querySelector('input');
 const add_btn = document.querySelector('.add-task-button');
 const todos_list = document.querySelector('.todos-list');
 const alert_message = document.querySelector('.alert-message');
+const delete_all_btn = document.querySelector('.delete-all-btn');
 
 let todos = getTodos();
 showTodos();
+
+
+delete_all_btn.addEventListener('click', deleteAllTodos);
 
 add_btn.addEventListener('click', () => {
     if (task_input.value.length > 0) {
@@ -19,6 +23,10 @@ add_btn.addEventListener('click', () => {
         saveTodos(todos);
         task_input.value = '';
         showTodos();
+        //check if its the first task
+        if (todos.length === 1) {
+            window.location.reload();
+        }
     } else {
         setTimeout(() => {
             alert_message.classList.remove('hide');
@@ -51,18 +59,16 @@ function showTodos() {
             todos_list.innerHTML += `
                 <div class="todo-item">
                     <div class="form-control mr-6">
-                        <input type="checkbox" checked="${
-                            todo.status === 'pending' ? false : true
-                        }" class="checkbox checkbox-secondary" onclick="updateTodoStatus(this, todos)" id=${id}>
+                        <input type="checkbox" class="checkbox checkbox-secondary checkbox-md" onclick="updateTodoStatus(this, todos)" id=${id}>
                     </div>
                     <p class="task-body">
                         ${todo.task}
                     </p>
                     <div class="todo-actions">
-                        <button class="btn btn-success">
+                        <button class="btn btn-success" onclick="editTodo(${id})">
                             <i class="bx bx-edit-alt bx-sm"></i>
                         </button>
-                        <button class="btn btn-error">
+                        <button class="btn btn-error" onclick="deleteTodo(${id})">
                             <i class="bx bx-trash bx-sm"></i>
                         </button>
                     </div>
@@ -88,12 +94,29 @@ function updateTodoStatus(selected_checkbox, todos) {
         task_name.style.opacity = '1';
         todos[selected_checkbox.id].status = 'pending';
     }
-    //save todos to local storage
+}
+
+//delete todo
+function deleteTodo(todo_id) {
+    todos.splice(todo_id, 1);
     saveTodos(todos);
-    //render todos to DOM
     showTodos();
 }
 
+//edit todo
+function editTodo(todo_id) {
+    let task_name = todos[todo_id].task;
+    task_input.value = task_name;
+    add_btn.innerHTML = '<i class="bx bx-check bx-sm"></i>';
+    deleteTodo(todo_id);
+}
+
+//delete all todos
+function deleteAllTodos() {
+    todos = [];
+    saveTodos(todos);
+    showTodos();
+}
 
 //check if todos are empty
 if (todos.length === 0) {

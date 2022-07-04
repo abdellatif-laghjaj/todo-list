@@ -47,15 +47,27 @@
                 </ul>
             </div>
 
-            <button class="btn btn-secondary clear-completed-button">
+            <a href="#confirm-modal" class="btn btn-secondary delete-all-btn">
                 Delete All
-            </button>
+            </a>
         </div>
 
         <div class="todos-list">
             
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal" id="confirm-modal">
+        <div class="modal-box">
+            <h3 class="font-bold text-lg">Info</h3>
+            <p class="py-4">All your todos will be deleted.</p>
+            <div class="modal-action">
+                <a href="#" class="btn">Hh Ok</a>
+            </div>
+        </div>
+    </div>
+
     <!-- JS -->
     <script src="js/main.js"></script>
 </body>
