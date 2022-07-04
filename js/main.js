@@ -1,7 +1,6 @@
 const task_input = document.querySelector('input');
 const add_btn = document.querySelector('.add-task-button');
 const todos_list = document.querySelector('.todos-list');
-const todo_items = document.querySelectorAll('ul.todos-list li.todo-item');
 const alert_message = document.querySelector('.alert-message');
 const delete_all_btn = document.querySelector('.delete-all-btn');
 
@@ -121,9 +120,4 @@ function clearAllTodos() {
     saveToLocalStorage();
     showAlertMessage('All todos cleared successfully', 'success');
     showAllTodos();
-}
-
-//check if todos are empty
-if (todos.length === 0) {
-    todos_list.innerHTML = '<p class="text-center">No todos yet</p>';
 }
