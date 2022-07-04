@@ -3,20 +3,22 @@ const add_btn = document.querySelector('.add-task-button');
 const todos_list = document.querySelector('.todos-list');
 
 
-<div class="todo-item" data-id="1">
-    <p class="task-body">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor, minus impedit
-    </p>
-    <div class="todo-actions">
-        <button class="btn btn-success">
-            <i data-feather="check"></i>
-        </button>
-        <button class="btn btn-error">
-            <i data-feather="trash-2"></i>
-        </button>
-    </div>
-</div>
+// <div class="todo-item" data-id="1">
+//     <p class="task-body">
+//         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor, minus impedit
+//     </p>
+//     <div class="todo-actions">
+//         <button class="btn btn-success">
+//             <i data-feather="check"></i>
+//         </button>
+//         <button class="btn btn-error">
+//             <i data-feather="trash-2"></i>
+//         </button>
+//     </div>
+// </div>
 
+//load todos from local storage
+loadTodos();
 
 //Todo Class
 class Todo {
@@ -59,26 +61,45 @@ const todo_list = [];
 
 
 add_btn.addEventListener('click', () => {
-    if(!isInputEmpty(task_input)) {
+    if (task_input.value.length > 0) {
         const task_body = task_input.value;
         const task_id = todo_list.length + 1;
         const todo = new Todo(task_id, task_body, false);
         todo.addTodo();
         todo_list.push(todo);
         task_input.value = '';
+        saveTodos();
+    } else {
+        alert('Please enter a task');
     }
 });
 
-//check the input field is not empty
-function isInputEmpty(task_input) {
-    let isEmpty = false;
-    if (task_input.value.length > 0) {
-        add_btn.disabled = false;
-        isEmpty = true;
+
+//save to local storage
+function saveTodos() {
+    localStorage.setItem('todo_list', JSON.stringify(todo_list));
+}
+
+//load todos from local storage
+function loadTodos() {
+    const todo_list_json = localStorage.getItem('todo_list');
+    const todo_list_array = JSON.parse(todo_list_json);
+    todo_list_array.forEach(todo => {
+        const todo_item = document.createElement('div');
+        todo_item.classList.add('todo-item');
+        todo_item.setAttribute('data-id', todo.task_id);
+        todo_item.innerHTML = `
+            <p class="task-body">${todo.task_body}</p>
+            <div class="todo-actions">
+                <button class="btn btn-success">
+                    <i data-feather="check"></i>
+                </button>
+                <button class="btn btn-error">
+                    <i data-feather="trash-2"></i>
+                </button>
+            </div>
+        `;
+        todos_list.appendChild(todo_item);
     }
-    else {
-        add_btn.disabled = true;
-        isEmpty = false;
-    }
-    return isEmpty;
+    );
 }
