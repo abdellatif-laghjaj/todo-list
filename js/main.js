@@ -21,6 +21,15 @@ function addToDo(task_input) {
     todos.push(task);
 }
 
+task_input.addEventListener('keyup', (e) => {
+    if (e.keyCode === 13 && task_input.value.length > 0) {
+        addToDo(task_input);
+        saveToLocalStorage();
+        task_input.value = '';
+        showAllTodos();
+    }
+});
+
 add_btn.addEventListener('click', () => {
     if (task_input.value === '') {
         showAlertMessage('Please enter a task', 'error');
@@ -82,6 +91,37 @@ function showAlertMessage(message, type) {
     }, 3000);
 }
 
+todos_list.addEventListener('click', (e) => {
+    switch (e.target.tagName) {
+        case 'BUTTON':
+            if (e.target.classList.contains('btn-success')) {
+                editTodo(e.target);
+            }
+            if (e.target.classList.contains('btn-error')) {
+                deleteTodo(e.target);
+            }
+            break;
+        default:
+            break;
+    }
+}, false);
+
+
+
+//delete todo
+function deleteTodo(id) {
+    todos = todos.filter((todo) => todo.id !== id);
+    saveToLocalStorage();
+    showAllTodos();
+}
+
+//edit todo
+function editTodo(id) {
+    let todo = todos.find((todo) => todo.id === id);
+    task_input.value = todo.task;
+}
+
+
 //clear all todos
 function clearAllTodos() {
     todos = [];
@@ -92,5 +132,5 @@ function clearAllTodos() {
 
 //check if todos are empty
 if (todos.length === 0) {
-    todos_list.innerHTML = '<p class="text-center">No todos yet!</p>';
+    todos_list.innerHTML = '<p class="text-center">No todos yet</p>';
 }
