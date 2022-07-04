@@ -12,33 +12,40 @@ delete_all_btn.addEventListener('click', deleteAllTodos);
 
 add_btn.addEventListener('click', () => {
     if (task_input.value.length > 0) {
-        //get todos from local storage
-        let todos = JSON.parse(localStorage.getItem('todo-list')) || [];
-        let task_info = {
-            task: task_input.value,
-            status: 'pending'
-        }
-        //add task to todos array
-        todos.push(task_info);
-        saveTodos(todos);
-        task_input.value = '';
-        showTodos();
-        //check if its the first task
-        if (todos.length === 1) {
-            window.location.reload();
-        }
+        addTodo(task_input);
     } else {
-        setTimeout(() => {
-            alert_message.classList.remove('hide');
-            alert_message.classList.add('show');
-            alert_message.innerHTML = 'Please enter a task first !';
-        }, 0);
-        setTimeout(() => {
-            alert_message.classList.remove('show');
-            alert_message.classList.add('hide');
-        }, 3000);
+        showAlertMessage('Please enter a task first');
     }
 });
+
+//add todo
+function addTodo(task_input) {
+    //get todos from local storage
+    let todos = JSON.parse(localStorage.getItem('todo-list')) || [];
+    let task_info = {
+        task: task_input.value,
+        status: 'pending'
+    }
+    //add task to todos array
+    todos.push(task_info);
+    saveTodos(todos);
+    window.location.reload();
+    showTodos();
+    task_input.value = '';
+}
+
+//show alert message
+function showAlertMessage(message) {
+    setTimeout(() => {
+        alert_message.classList.remove('hide');
+        alert_message.classList.add('show');
+        alert_message.innerHTML = message;
+    }, 0);
+    setTimeout(() => {
+        alert_message.classList.remove('show');
+        alert_message.classList.add('hide');
+    }, 3000);
+}
 
 
 //save todos to local storage
@@ -54,21 +61,18 @@ function getTodos() {
 
 //render todos to DOM
 function showTodos() {
-    if(todos){
+    if (todos) {
         todos.forEach((todo, id) => {
             todos_list.innerHTML += `
                 <div class="todo-item">
-                    <div class="form-control mr-6">
-                        <input type="checkbox" class="checkbox checkbox-secondary checkbox-md" onclick="updateTodoStatus(this)" id=${id}>
-                    </div>
                     <p class="task-body">
                         ${todo.task}
                     </p>
                     <div class="todo-actions">
-                        <button class="btn btn-success" onclick="editTodo(this, todos)">
+                        <button class="btn btn-success">
                             <i class="bx bx-edit-alt bx-sm"></i>
                         </button>
-                        <button class="btn btn-error" onclick="deleteTodo(this, todos)">
+                        <button class="btn btn-error">
                             <i class="bx bx-trash bx-sm"></i>
                         </button>
                     </div>
@@ -78,28 +82,11 @@ function showTodos() {
     }
 }
 
-//update todo status
-function updateTodoStatus(selected_checkbox) {
-    //get the task paragraph
-    let task_name = selected_checkbox.parentElement.parentElement.querySelector('.task-body');
-    
-    //change the status of the selected task
-    if (selected_checkbox.checked) {
-        task_name.style.textDecoration = 'line-through';
-        task_name.style.opacity = '0.6';
-        todos[selected_checkbox.id].status = 'completed';
-    }else{
-        task_name.style.textDecoration = 'none';
-        task_name.style.opacity = '1';
-        todos[selected_checkbox.id].status = 'pending';
-    }
-    saveTodos(todos);
-}
-
 //delete todo
 function deleteTodo(selected_btn, todos) {
     todos.splice(selected_btn.id, 1);
     saveTodos(todos);
+    showTodos();
 }
 
 //edit todo
