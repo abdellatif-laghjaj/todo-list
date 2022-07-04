@@ -53,17 +53,18 @@ header h1 {
     margin-bottom: 10px;
 }
 
-.alert-error{
+.alert-message{
+    width: 100%;
     transition: all 0.3s ease;
     transform: scale(0.9);
 }
 
-.alert-error.show{
+.alert-message.show{
     display: block;
     transform: scale(1);
 }
 
-.alert-error.hide{
+.alert-message.hide{
     display: none;
 }
 

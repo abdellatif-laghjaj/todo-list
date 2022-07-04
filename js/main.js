@@ -22,22 +22,32 @@ function addToDo(task_input) {
 
 add_btn.addEventListener('click', () => {
     if (task_input.value === '') {
-        showAlertMessage('Please enter a task');
+        showAlertMessage('Please enter a task', 'error');
     }else {
         addToDo(task_input);
+
     }
 });
 
 
 //show alert message
-function showAlertMessage(message) {
-    alert_message.innerHTML = message;
+function showAlertMessage(message, type) {
+    let alert_box = `
+        <div class="alert alert-${type} shadow-lg mb-5 w-full">
+            <div>
+                <span>
+                    ${message}
+                </span>
+            </div>
+        </div>
+    `
+    alert_message.innerHTML = alert_box;
     alert_message.classList.remove('hide');
     alert_message.classList.add('show');
     setTimeout(() => {
         alert_message.classList.remove('show');
         alert_message.classList.add('hide');
-    }, e000);
+    }, 3000);
 }
 
 //check if todos are empty
