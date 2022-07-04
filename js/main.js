@@ -1,20 +1,23 @@
 const task_input = document.querySelector('input');
 const add_btn = document.querySelector('.add-task-button');
 const todos_list = document.querySelector('.todos-list');
+const todo_items = document.querySelectorAll('li');
 const alert_message = document.querySelector('.alert-message');
 const delete_all_btn = document.querySelector('.delete-all-btn');
-const delete_btns = document.querySelectorAll('.delete-btn');
-const edit_btns = document.querySelectorAll('.edit-btn');
-
 
 
 let todos = JSON.parse(localStorage.getItem('todos')) || [];
 
 window.addEventListener('DOMContentLoaded', showAllTodos);
 
+//get random unique id
+function getRandomId() {
+    return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+}
+
 function addToDo(task_input) {
     let task = {
-        id: todos.length + 1,
+        id: getRandomId(),
         task: task_input.value,
         completed: false
     }
@@ -49,7 +52,7 @@ function showAllTodos() {
     todos_list.innerHTML = '';
     todos.forEach((todo) => {
         todos_list.innerHTML += `
-            <li class="todo-item">
+            <li class="todo-item" data-id="${todo.id}">
                 <p class="task-body">
                     ${todo.task}
                 </p>
@@ -91,26 +94,16 @@ function showAlertMessage(message, type) {
     }, 3000);
 }
 
-todos_list.addEventListener('click', (e) => {
-    switch (e.target.tagName) {
-        case 'BUTTON':
-            if (e.target.classList.contains('btn-success')) {
-                editTodo(e.target);
-            }
-            if (e.target.classList.contains('btn-error')) {
-                deleteTodo(e.target);
-            }
-            break;
-        default:
-            break;
-    }
-}, false);
-
+todo_items.forEach((todo_item) => {
+    //get data-id from each todo item
+    // let id = todo_item.getAttribute('data-id');
+   console.log(todo_item);
+});
 
 
 //delete todo
 function deleteTodo(id) {
-    todos = todos.filter((todo) => todo.id !== id);
+    todos = todos.slice().filter((todo) => todo.id !== id);
     saveToLocalStorage();
     showAllTodos();
 }
@@ -119,6 +112,9 @@ function deleteTodo(id) {
 function editTodo(id) {
     let todo = todos.find((todo) => todo.id === id);
     task_input.value = todo.task;
+    todos = todos.filter((todo) => todo.id !== id);
+    saveToLocalStorage();
+    showAllTodos();
 }
 
 
