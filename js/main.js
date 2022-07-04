@@ -24,7 +24,7 @@ function addToDo(task_input) {
 add_btn.addEventListener('click', () => {
     if (task_input.value === '') {
         showAlertMessage('Please enter a task', 'error');
-    }else {
+    } else {
         addToDo(task_input);
         saveToLocalStorage();
         showAllTodos();
@@ -33,26 +33,27 @@ add_btn.addEventListener('click', () => {
     }
 });
 
+delete_all_btn.addEventListener('click', clearAllTodos);
 
 //show all todos
 function showAllTodos() {
     todos_list.innerHTML = '';
     todos.forEach((todo) => {
         todos_list.innerHTML += `
-                <li class="todo-item">
-                    <p class="task-body">
-                        ${todo.task}
-                    </p>
-                    <div class="todo-actions">
-                        <button class="btn btn-success">
-                            <i class="bx bx-edit-alt bx-sm"></i>    
-                        </button>
-                        <button class="btn btn-error">  
-                            <i class="bx bx-trash bx-sm"></i>
-                        </button>
-                    </div>
-                </li>
-                `;
+            <li class="todo-item">
+                <p class="task-body">
+                    ${todo.task}
+                </p>
+                <div class="todo-actions">
+                    <button class="btn btn-success">
+                        <i class="bx bx-edit-alt bx-sm"></i>    
+                    </button>
+                    <button class="btn btn-error">  
+                        <i class="bx bx-trash bx-sm"></i>
+                    </button>
+                </div>
+            </li>
+        `;
     });
 }
 
@@ -79,6 +80,14 @@ function showAlertMessage(message, type) {
         alert_message.classList.remove('show');
         alert_message.classList.add('hide');
     }, 3000);
+}
+
+//clear all todos
+function clearAllTodos() {
+    todos = [];
+    saveToLocalStorage();
+    showAlertMessage('All todos cleared successfully', 'success');
+    showAllTodos();
 }
 
 //check if todos are empty
