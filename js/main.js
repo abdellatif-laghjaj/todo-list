@@ -4,6 +4,7 @@ const todos_list = document.querySelector('.todos-list');
 const alert_message = document.querySelector('.alert-message');
 
 let todos = getTodos();
+showTodos();
 
 add_btn.addEventListener('click', () => {
     if (task_input.value.length > 0) {
@@ -71,7 +72,6 @@ function showTodos() {
     }
 }
 
-
 //update todo status
 function updateTodoStatus(selected_checkbox, todos) {
     //get the task paragraph
@@ -92,4 +92,10 @@ function updateTodoStatus(selected_checkbox, todos) {
     saveTodos(todos);
     //render todos to DOM
     showTodos();
+}
+
+
+//check if todos are empty
+if (todos.length === 0) {
+    todos_list.innerHTML = '<p class="text-center">No todos yet!</p>';
 }

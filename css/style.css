@@ -97,8 +97,9 @@ header .input-section {
     justify-content: space-between;
     align-items: center;
     min-height: 100%;
-    max-height: 64vh;
+    max-height: 54vh;
     overflow-y: auto;
+    width: 100%;
 }
 
 .todos-list .todo-item{
