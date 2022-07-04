@@ -8,8 +8,9 @@ const edit_btns = document.querySelectorAll('.edit-btn');
 
 
 
-let todos = [];
+let todos = JSON.parse(localStorage.getItem('todos')) || [];
 
+window.addEventListener('DOMContentLoaded', showAllTodos);
 
 function addToDo(task_input) {
     let task = {
@@ -25,10 +26,40 @@ add_btn.addEventListener('click', () => {
         showAlertMessage('Please enter a task', 'error');
     }else {
         addToDo(task_input);
-
+        saveToLocalStorage();
+        showAllTodos();
+        task_input.value = '';
+        showAlertMessage('Task added successfully', 'success');
     }
 });
 
+
+//show all todos
+function showAllTodos() {
+    todos_list.innerHTML = '';
+    todos.forEach((todo) => {
+        todos_list.innerHTML += `
+                <li class="todo-item">
+                    <p class="task-body">
+                        ${todo.task}
+                    </p>
+                    <div class="todo-actions">
+                        <button class="btn btn-success">
+                            <i class="bx bx-edit-alt bx-sm"></i>    
+                        </button>
+                        <button class="btn btn-error">  
+                            <i class="bx bx-trash bx-sm"></i>
+                        </button>
+                    </div>
+                </li>
+                `;
+    });
+}
+
+//save todos to local storage
+function saveToLocalStorage() {
+    localStorage.setItem('todos', JSON.stringify(todos));
+}
 
 //show alert message
 function showAlertMessage(message, type) {
