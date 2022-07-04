@@ -11,7 +11,7 @@
     <!--- Tailwind CSS & Daisy UI CSS -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.18.0/dist/full.css" rel="stylesheet" type="text/css" />
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet" type="text/css" />
-
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <!-- Favicon -->
     <link rel="icon" href="res/favicon.svg">
     <title>Todo List</title>
@@ -32,49 +32,46 @@
             <div class="input-section">
                 <input type="text" placeholder="Add a todo . . ." class="input input-bordered input-secondary w-full max-w-xs" />
                 <button class="btn btn-secondary add-task-button">
-                    <i data-feather="plus"></i>
+                    <i class="bx bx-plus bx-sm"></i>
                 </button>
             </div>
         </header>
 
         <div class="todos-filter">
-            <div class="filter-item">
-                <input type="radio" name="radio-3" class="radio radio-secondary" checked />
-                <span>All</span>
+            <div class="dropdown">
+                <label tabindex="0" class="btn m-1">Filter</label>
+                <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                    <li><a>All</a></li>
+                    <li><a>Pending</a></li>
+                    <li><a>Completed</a></li>
+                </ul>
             </div>
 
-            <div class="filter-item">
-                <input type="radio" name="radio-3" class="radio radio-secondary" checked />
-                <span class="radio-text">Pending</span>
-            </div>
-
-            <div class="filter-item">
-                <input type="radio" name="radio-3" class="radio radio-secondary" checked />
-                <span class="radio-text">Completed</span>
-            </div>
+            <button class="btn btn-secondary clear-completed-button">
+                Delete All
+            </button>
         </div>
 
         <div class="todos-list">
-            <!-- <div class="todo-item">
+            <div class="todo-item">
+                <div class="form-control mr-6">
+                    <input type="checkbox" checked="checked" class="checkbox checkbox-secondary" />
+                </div>
                 <p class="task-body">
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor, minus impedit
                 </p>
                 <div class="todo-actions">
                     <button class="btn btn-success">
-                        <i data-feather="check"></i>
+                        <i class="bx bx-edit-alt bx-sm"></i>
                     </button>
                     <button class="btn btn-error">
-                        <i data-feather="trash-2"></i>
+                        <i class="bx bx-trash bx-sm"></i>
                     </button>
                 </div>
-            </div> -->
+            </div>
         </div>
     </div
     <!-- JS -->
-    <script src="https://unpkg.com/feather-icons"></script>
     <script src="js/main.js"></script>
-    <script>
-        feather.replace()
-    </script>
 </body>
 </html>
