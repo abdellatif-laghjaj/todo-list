@@ -67,7 +67,7 @@ add_btn.addEventListener('click', () => {
         todo_list.push(todo);
         task_input.value = '';
     }
-}
+});
 
 //check the input field is not empty
 function isInputEmpty(task_input) {
