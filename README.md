@@ -1,2 +1,34 @@
-# todo-list
- Simple todo list web app to save and manage todos, and save them to the local storage The web app has a beatifull UI design that is make it dun adding todos 
+# Simple Todo List Web App with Tailwind CSS and JavaScript
+
+This repository contains a simple and elegant Todo List web app built using Tailwind CSS and JavaScript. The app allows users to create, manage, and save todos, all while enjoying a beautiful user interface design.
+
+## Features
+
+- Add new todos with a user-friendly interface.
+- Mark todos as completed.
+- Delete completed todos or those no longer needed.
+- Save todos to the local storage for persistent data.
+
+## Live Demo
+
+You can check out the live demo of the Todo List web app [here](link-to-live-demo).
+
+## Screenshots
+
+![Todo List Web App](screenshot.png)
+
+## Technologies Used
+
+- HTML5: The structure of the web app.
+- CSS3 with Tailwind CSS: For styling the app beautifully.
+- JavaScript: To handle the interactive functionality of the app.
+- Local Storage: To save todos for persistent data across browser sessions.
+
+## Getting Started
+
+To run the Todo List web app on your local machine, follow these steps:
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/abdellatif-laghjaj/todo-list.git
