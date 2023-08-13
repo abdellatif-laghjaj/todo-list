@@ -19,23 +19,17 @@
 
     <!-- Copyright -->
     <div class="author-text">
-        <p>Made with ❤️
-            by <a href="https://github.com/abdellatif-laghjaj" target="_blank">
-                <b>Abdellatif Laghjaj</b>
-            </a>
-        </p>
+        <p>Made with ❤️ by <a href="https://github.com/abdellatif-laghjaj" target="_blank"><b>Abdellatif Laghjaj</b></a></p>
     </div>
     
     <div class="container">
         <header>
             <h1>Todo List</h1>
             <!-- Error message -->
-            <div class="alert-message">
-
-            </div>
-
+            <div class="alert-message"></div>
             <div class="input-section">
                 <input type="text" placeholder="Add a todo . . ." class="input input-bordered input-secondary w-full max-w-xs" />
+                <input type="date" class="input input-bordered input-secondary w-full max-w-xs schedule-date" />
                 <button class="btn btn-secondary add-task-button">
                     <i class="bx bx-plus bx-sm"></i>
                 </button>
@@ -43,23 +37,32 @@
         </header>
 
         <div class="todos-filter">
-            <!-- <div class="dropdown">
+            <div class="dropdown">
                 <label tabindex="0" class="btn m-1">Filter</label>
                 <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-                    <li><a>All</a></li>
-                    <li><a>Pending</a></li>
-                    <li><a>Completed</a></li>
+                    <li onclick="filterTodos('all')"><a>All</a></li>
+                    <li onclick="filterTodos('pending')"><a>Pending</a></li>
+                    <li onclick="filterTodos('completed')"><a>Completed</a></li>
                 </ul>
-            </div> -->
-
+            </div>
             <button class="btn btn-secondary delete-all-btn">
                 Delete All
             </button>
         </div>
 
-        <ul class="todos-list">
-            
-        </ul>
+         <table class="table w-full">
+            <thead>
+                <tr>
+                    <th>Task</th>
+                    <th>Due Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody class="todos-list-body">
+            </tbody>
+        </table>
+
     </div>
 
     <!--Theme switcher-->
@@ -83,6 +86,7 @@
             </ul>
         </div>
     </div>
+
     <!-- JS -->
     <script src="js/main.js"></script>
     <script src="js/theme_switcher.js"></script>
