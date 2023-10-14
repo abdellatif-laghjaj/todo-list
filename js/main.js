@@ -25,10 +25,10 @@ function getRandomId() {
 function addToDo(task_input, date_input) {
   let task = {
     id: getRandomId(),
-    task: task_input.value,
-    dueDate: date_input.value, // added due date
+    task: task_input.value.length > 14 ? task_input.value.slice(0, 14) + "..." : task_input.value,
+    dueDate: date_input.value,
     completed: false,
-    status: "pending", // adding initial status as 'pending'
+    status: "pending",
   };
   todos.push(task);
 }
@@ -154,8 +154,9 @@ function clearAllTodos() {
 function toggleStatus(id) {
   let todo = todos.find((todo) => todo.id === id);
   todo.completed = !todo.completed;
+  console.log("todo", todo);
   saveToLocalStorage();
-  showAllTodos();
+  displayTodos(todos);
 }
 
 function filterTodos(status) {
@@ -185,7 +186,7 @@ function displayTodos(todosArray) {
             <tr class="todo-item" data-id="${todo.id}">
                 <td>${todo.task}</td>
                 <td>${todo.dueDate || "No due date"}</td>
-                <td>${todo.status}</td>
+                <td>${todo.completed ? "Completed" : "Pending"}</td>
                 <td>
                     <button class="btn btn-warning btn-sm" onclick="editTodo('${
                       todo.id
