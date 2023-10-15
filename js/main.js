@@ -25,7 +25,7 @@ function getRandomId() {
 function addToDo(task_input, date_input) {
   let task = {
     id: getRandomId(),
-    task: task_input.value.length > 10 ? task_input.value.slice(0, 10) + "..." : task_input.value,
+    task: task_input.value.length > 14 ? task_input.value.slice(0, 14) + "..." : task_input.value,
     dueDate: date_input.value,
     completed: false,
     status: "pending",
