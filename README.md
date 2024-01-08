@@ -2,16 +2,16 @@
 
 ## Table of Contents
 
-1. [Introduction](#introduction)
-2. [Project Overview](#project-overview)
-3. [Code Structure](#code-structure)
-4. [Code Refactoring](#code-refactoring)
-5. [Clean Code Practices](#clean-code-practices)
-6. [Design Patterns](#design-patterns)
-7. [Deployment](#deployment)
-8. [Usage](#usage)
-9. [Getting Started](#getting-started)
-10. [License](#license)
+1. [Introduction](#1-introduction)
+2. [Project Overview](#2-project-overview)
+3. [Code Structure](#3-code-structure)
+4. [Code Refactoring](#4-code-refactoring)
+5. [Clean Code Practices](#5-clean-code-practices)
+6. [Design Patterns](#6-design-patterns)
+7. [Deployment](#7-deployment)
+8. [Usage](#8-usage)
+9. [Getting Started](#9-getting-started)
+10. [License](#10-license)
 
 ## 1. Introduction
 
@@ -134,8 +134,4 @@ Make sure you have the following installed:
 
 ## 10. License
 
-This project is licensed under the [MIT License](LICENSE). Feel free to use, modify, and distribute the code for personal or commercial projects.
-
----
-
-Thank you for using the Todo List App! If you have any questions or suggestions, please feel free to reach out.
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT) and was originally developed by [@abdellatif-laghjaj](https://github.com/abdellatif-laghjaj) and refactored by [@takitajwar17](https://github.com/takitajwar17). 
