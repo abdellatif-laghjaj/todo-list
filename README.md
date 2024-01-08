@@ -6,10 +6,11 @@
 2. [Project Overview](#2-project-overview)
 3. [Getting Started](#3-getting-started)
 4. [Code Structure](#4-code-structure)
-5. [Code Refactoring](#5-code-refactoring)
-6. [Deployment](#6-deployment)
-7. [Usage](#7-usage)
-8. [License](#8-license)
+5. [Dependencies](#5-dependencies)
+6. [Code Refactoring](#6-code-refactoring)
+7. [Deployment](#7-deployment)
+8. [Usage](#8-usage)
+9. [License](#9-license)
 
 ## 1. Introduction
 
@@ -58,7 +59,14 @@ The project follows a modular and organized structure to enhance readability, ma
 - **JavaScript (`main.js`):** Logic for handling user interactions, managing tasks, and implementing theme switching.
 - **Fonts (`Poppins`):** Imported from Google Fonts for consistent typography.
 
-## 5. Code Refactoring
+## 5. Dependencies
+
+- **Tailwind CSS:** Used for styling the components. It's linked through CDN in the `index.html` file.
+- **Daisy UI:** A CSS library for UI components, linked through CDN.
+- **Boxicons:** Icons library, linked through CDN.
+- **Google Fonts (Poppins):** Font used for the app, linked in the `style.css` file.
+
+## 6. Code Refactoring
 
 ### Code Smells Addressed:
 
@@ -104,11 +112,11 @@ The project follows a modular and organized structure to enhance readability, ma
 - Introduction of clear extension points for future development.
 - Enhanced visualization of application flow.
 
-## 6. Deployment
+## 7. Deployment
 
 The Todo List App is deployed and accessible online. You can use the following link to access the application: [Todo List App](https://takitajwar17.github.io/Simple-Todo-List-Refactored/)
 
-## 7. Usage
+## 8. Usage
 
 1. **Adding a Task:**
    - Enter the task in the input field.
@@ -137,6 +145,6 @@ The Todo List App is deployed and accessible online. You can use the following l
    - Select a theme from the available options.
 
 
-## 8. License
+## 9. License
 
 This project is licensed under the [MIT License](https://opensource.org/licenses/MIT) and was originally developed by [@abdellatif-laghjaj](https://github.com/abdellatif-laghjaj) and refactored by [@takitajwar17](https://github.com/takitajwar17). 
