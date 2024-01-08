@@ -1,4 +1,4 @@
-# Simple Todo List App Documentation
+# Simple Todo List App Refactored: Documentation
 
 ## Table of Contents
 
