@@ -1,5 +1,5 @@
 const task_input = document.querySelector("input");
-const date_input = document.querySelector(".schedule-date"); // added date input
+const date_input = document.querySelector(".schedule-date"); 
 const add_btn = document.querySelector(".add-task-button");
 const todos_list_body = document.querySelector(".todos-list-body");
 const alert_message = document.querySelector(".alert-message");
