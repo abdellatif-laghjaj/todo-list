@@ -100,11 +100,13 @@ The project follows a modular and organized structure to enhance readability, ma
 
 #### Previous UML:
 
-[Insert Previous UML Diagram Here]
+
+<img src="https://github.com/takitajwar17/Simple-Todo-List-Refactored/assets/111155827/3bf12b6a-c237-4d66-b94e-da8ed5af5a85" width="500">
 
 #### New UML:
 
-[Insert New UML Diagram Here]
+<img src="https://github.com/takitajwar17/Simple-Todo-List-Refactored/assets/111155827/32a196a6-5a3d-4f0d-9582-9c4d1999d0d3" width="550">
+
 
 **Comparison:**
 - The new UML reflects a better separation of concerns with distinct classes (`TodoManager`, `TodoItem`, `ThemeSwitcher`, `TodoListApp`).
