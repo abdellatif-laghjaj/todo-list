@@ -70,33 +70,49 @@ The project follows a modular and organized structure to enhance readability, ma
 
 ### Code Smells Addressed:
 
-1. **Inline Styles in HTML:** Moved styles from HTML to the `style.css` file.
-2. **Hard-Coded Styles in CSS:** Introduced CSS variables for consistent theming.
-3. **Large Container Class:** Split styles in the `.container` class for better organization.
-4. **Inline JavaScript:** Moved inline JavaScript event handlers to the `main.js` file.
-5. **Mixing Presentation and Logic:** Refactored JavaScript for better separation of concerns.
+1. **Monolithic Structure:**
+   - **Code Smell:** Original code had a monolithic structure, making it harder to maintain.
+   - **Refactoring:** Introduced modularization through separate classes (`TodoItemFormatter`, `TodoManager`, `UIManager`, and `ThemeSwitcher`), each with a distinct responsibility.
+
+2. **Global Functions:**
+   - **Code Smell:** Original code used global functions for event handling, reducing modularity.
+   - **Refactoring:** Event handling encapsulated within the `UIManager` class, promoting better organization and separation of concerns.
+
+3. **HTML Manipulation in Multiple Places:**
+   - **Code Smell:** Original code directly manipulated HTML in scattered locations.
+   - **Refactoring:** Centralized HTML manipulation within the `UIManager` class for consistency.
+
+4. **Lack of Error Handling:**
+   - **Code Smell:** Original code lacked proper error handling.
+   - **Refactoring:** Introduced error handling in the `UIManager` class for improved user experience and robustness.
 
 ### SOLID Violations Addressed:
 
-1. **Single Responsibility Principle (SRP) Violation:** Separated the responsibilities of creating tasks and modifying the `todos` array.
-2. **Open/Closed Principle (OCP) Violation:** Improved extensibility by introducing a TodoItem class.
+1. **Single Responsibility Principle (SRP):**
+   - **Violation:** Original code violated SRP by combining UI, business logic, and theme handling.
+   - **Refactoring:** Responsibilities separated into different classes (`TodoManager`, `UIManager`, `ThemeSwitcher`), adhering to SRP.
 
-### Design Smells Addressed:
+2. **Open/Closed Principle (OCP):**
+   - **Violation:** Original code was less extensible, requiring modifications for new features.
+   - **Refactoring:** Designed for extensibility, allowing addition of new features without modifying existing classes.
 
-1. **Global State Usage:** Encapsulated the state within the `TodoManager` class.
-2. **Inline Event Handlers:** Centralized event handling in the `TodoListApp` class.
-3. **Lack of Validation:** Introduced validation for user inputs.
+3. **Dependency Inversion Principle (DIP):**
+   - **Violation:** Original code exhibited high coupling.
+   - **Refactoring:** Followed DIP by depending on abstractions, enhancing flexibility and testability.
 
-### Clean Code Practices:
+### Design Pattern Violations Addressed:
 
-- **Descriptive Naming:** Used descriptive names for variables and functions.
-- **Consistent Formatting:** Maintained consistent code formatting.
-- **Modularization:** Organized code into modular functions and classes.
-- **Comments:** Added comments to explain complex logic or non-trivial code blocks.
+1. **Observer Pattern for Event Handling:**
+   - **Violation:** Original code used inline event listeners.
+   - **Refactoring:** Employed Observer pattern by encapsulating event handling within the `UIManager` class.
 
-### Implemented Design Patterns:
+2. **Strategy Pattern for Task Formatting:**
+   - **Violation:** Original code lacked a clear strategy for formatting tasks.
+   - **Refactoring:** Introduced a `TodoItemFormatter` class, applying the Strategy pattern for consistent task formatting.
 
-1. **Singleton Pattern:** Applied for the `ThemeSwitcher` class to ensure a single instance for theme switching functionality.
+3. **Singleton Pattern for Theme Handling:**
+   - **Violation:** Original code lacked a clear structure for theme handling.
+   - **Refactoring:** Introduced a `ThemeSwitcher` class, applying the Singleton pattern for centralized theme management and persistence.
 
 #### Previous UML:
 
@@ -108,11 +124,27 @@ The project follows a modular and organized structure to enhance readability, ma
 <img src="https://github.com/takitajwar17/Simple-Todo-List-Refactored/assets/111155827/32a196a6-5a3d-4f0d-9582-9c4d1999d0d3" width="550">
 
 
-**Comparison:**
-- The new UML reflects a better separation of concerns with distinct classes (`TodoManager`, `TodoItem`, `ThemeSwitcher`, `TodoListApp`).
-- Improved representation of relationships between classes.
-- Introduction of clear extension points for future development.
-- Enhanced visualization of application flow.
+### Class Responsibilities:
+
+1. **TodoItemFormatter:**
+   - Responsible for formatting individual task items.
+   - Implements the Strategy pattern to ensure consistent and uniform task formatting.
+
+2. **TodoManager:**
+   - Manages the overall logic related to todos.
+   - Responsible for creating, editing, deleting, and toggling the status of todo items.
+   - Encapsulates the todos array, ensuring centralized control over the application's state.
+
+3. **UIManager:**
+   - Manages the user interface components and interactions.
+   - Handles event listeners for user actions such as adding, editing, and deleting todos.
+   - Responsible for displaying todos in the HTML, handling user inputs, and showing alert messages.
+   - Ensures separation of concerns between UI-related activities and application logic.
+
+4. **ThemeSwitcher:**
+   - Handles theme-related functionalities.
+   - Implements the Singleton pattern to ensure a single instance responsible for theme switching.
+   - Manages the application's theme by updating the HTML's data-theme attribute.
 
 ## 7. Deployment
 
