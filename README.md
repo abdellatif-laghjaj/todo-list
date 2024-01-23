@@ -38,13 +38,13 @@ Make sure you have the following installed:
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/takitajwar17/Simple-Todo-List-Refactored.git
+   git clone git@github.com:abdellatif-laghjaj/todo-list.git
    ```
 
 2. **Navigate to the Project Directory:**
 
    ```bash
-   cd Simple-Todo-List-Refactored
+   cd todo-list
    ```
 
 3. **Open `index.html` in a Browser:**
@@ -115,16 +115,6 @@ The project follows a modular and organized structure to enhance readability, ma
 3. **Singleton Pattern for Theme Handling:**
    - **Violation:** Original code lacked a clear structure for theme handling.
    - **Refactoring:** Introduced a `ThemeSwitcher` class, applying the Singleton pattern for centralized theme management and persistence.
-
-#### Previous UML:
-
-
-<img src="https://github.com/takitajwar17/Simple-Todo-List-Refactored/assets/111155827/3bf12b6a-c237-4d66-b94e-da8ed5af5a85" width="500">
-
-#### New UML:
-
-<img src="https://github.com/takitajwar17/Simple-Todo-List-Refactored/assets/111155827/32a196a6-5a3d-4f0d-9582-9c4d1999d0d3" width="550">
-
 
 ### Class Responsibilities:
 
