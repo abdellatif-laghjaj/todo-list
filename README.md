@@ -140,7 +140,7 @@ The project follows a modular and organized structure to enhance readability, ma
 
 ## 7. Deployment
 
-The TO-DOIT App is deployed and accessible online. You can use the following link to access the application: [TO-DOIT](https://takitajwar17.github.io/Simple-Todo-List-Refactored/)
+The TO-DOIT App is deployed and accessible online. You can use the following link to access the application: [TO-DOIT](https://todotify.vercel.app/)
 
 ## 8. Usage
 
@@ -173,4 +173,4 @@ The TO-DOIT App is deployed and accessible online. You can use the following lin
 
 ## 9. License
 
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT) and was originally developed by [@abdellatif-laghjaj](https://github.com/abdellatif-laghjaj) and refactored by [@takitajwar17](https://github.com/takitajwar17). 
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT) and was originally developed by [@abdellatif-laghjaj](https://github.com/abdellatif-laghjaj) with the contribution of [@takitajwar17](https://github.com/takitajwar17). 
