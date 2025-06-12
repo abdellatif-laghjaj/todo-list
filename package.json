@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "jest": "^30.0.0"
+  },
+  "devDependencies": {
+    "jest-environment-jsdom": "^30.0.0"
+  }
+}

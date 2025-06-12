@@ -299,3 +299,6 @@ const uiManager = new UIManager(todoManager, todoItemFormatter);
 const themes = document.querySelectorAll(".theme-item");
 const html = document.querySelector("html");
 const themeSwitcher = new ThemeSwitcher(themes, html);
+
+
+module.exports = { TodoItemFormatter, TodoManager, ThemeSwitcher };
