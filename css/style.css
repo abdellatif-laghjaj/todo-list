@@ -84,11 +84,7 @@ header h1 {
   margin-bottom: 16px;
   text-align: center;
   /* Use Daisy UI's primary color for the gradient */
-  background: linear-gradient(
-    135deg,
-    oklch(var(--p)),
-    oklch(var(--s))
-  );
+  background: linear-gradient(135deg, oklch(var(--p)), oklch(var(--s)));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -121,11 +117,7 @@ header h1 {
 .progress-bar {
   transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   /* Use Daisy UI's primary color for the progress bar */
-  background: linear-gradient(
-    90deg,
-    oklch(var(--p)),
-    oklch(var(--su))
-  );
+  background: linear-gradient(90deg, oklch(var(--p)), oklch(var(--su)));
   position: relative;
   overflow: hidden;
 }
@@ -555,11 +547,7 @@ mark {
 }
 
 .badge-info {
-  background: linear-gradient(
-    135deg,
-    oklch(var(--p)),
-    oklch(var(--s))
-  );
+  background: linear-gradient(135deg, oklch(var(--p)), oklch(var(--s)));
 }
 
 /* Loading Animation for Actions */
