@@ -7,25 +7,22 @@
   font-family: "Poppins", sans-serif;
 }
 
+/* Use CSS variables that respect Daisy UI themes */
 :root {
-  --color-primary: #5a78ff;
-  --color-secondary: #0957ff;
-  --color-success: #00d084;
-  --color-warning: #ff9900;
-  --color-error: #ff5757;
   --shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  --shadow-medium: 0 8px 32px 0 rgba(31, 38, 135, 0.3);
+  --shadow-medium: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
   --border-radius: 12px;
 }
 
+/* Let Daisy UI handle the body background through themes */
 body {
   position: relative;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   padding: 20px 0;
+  /* Remove hardcoded background - let Daisy UI themes control it */
 }
 
 .author-text {
@@ -35,9 +32,11 @@ body {
   transform: translateX(-50%);
   text-align: center;
   z-index: 100;
-  color: rgba(255, 255, 255, 0.8);
+  /* Let Daisy UI control the text color through themes */
+  opacity: 0.8;
 }
 
+/* Use Daisy UI base colors and let themes control the appearance */
 .container {
   display: flex;
   align-items: center;
@@ -47,12 +46,14 @@ body {
   min-width: 320px;
   max-width: 1200px;
   width: 100%;
-  background: rgba(255, 255, 255, 0.15);
+  /* Use Daisy UI's base-100 background and let themes control it */
+  background: oklch(var(--b1) / 0.95);
   box-shadow: var(--shadow-medium);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: var(--border-radius);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  /* Use Daisy UI's border color */
+  border: 1px solid oklch(var(--b3));
   padding: 24px;
   animation: slideUp 0.6s ease-out;
 }
@@ -82,10 +83,11 @@ header h1 {
   font-weight: 800;
   margin-bottom: 16px;
   text-align: center;
+  /* Use Daisy UI's primary color for the gradient */
   background: linear-gradient(
     135deg,
-    var(--color-primary),
-    var(--color-secondary)
+    oklch(var(--p)),
+    oklch(var(--s))
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -118,10 +120,11 @@ header h1 {
 
 .progress-bar {
   transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Use Daisy UI's primary color for the progress bar */
   background: linear-gradient(
     90deg,
-    var(--color-primary),
-    var(--color-success)
+    oklch(var(--p)),
+    oklch(var(--su))
   );
   position: relative;
   overflow: hidden;
@@ -195,7 +198,8 @@ header .input-section {
 }
 
 .search-input:focus {
-  box-shadow: 0 0 0 3px rgba(var(--color-primary), 0.1);
+  /* Use Daisy UI's primary color with opacity */
+  box-shadow: 0 0 0 3px oklch(var(--p) / 0.2);
 }
 
 /* Filter Section */
@@ -215,7 +219,8 @@ header .input-section {
   max-height: 60vh;
   overflow-y: auto;
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  /* Use Daisy UI border colors */
+  border: 1px solid oklch(var(--b3));
 }
 
 .table {
@@ -225,7 +230,8 @@ header .input-section {
 .table th {
   position: sticky;
   top: 0;
-  background: rgba(255, 255, 255, 0.1);
+  /* Use Daisy UI background colors */
+  background: oklch(var(--b2) / 0.9);
   backdrop-filter: blur(10px);
   font-weight: 600;
   text-transform: uppercase;
@@ -236,11 +242,13 @@ header .input-section {
 /* Todo Items */
 .todo-item {
   transition: all 0.3s ease;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  /* Use Daisy UI border colors */
+  border-bottom: 1px solid oklch(var(--b3) / 0.5);
 }
 
 .todo-item:hover {
-  background: rgba(255, 255, 255, 0.05);
+  /* Use Daisy UI background colors */
+  background: oklch(var(--b2) / 0.3);
   transform: translateX(4px);
 }
 
@@ -251,8 +259,10 @@ header .input-section {
 }
 
 .todo-item.subtask {
-  background: rgba(255, 255, 255, 0.02);
-  border-left: 3px solid var(--color-primary);
+  /* Use Daisy UI background colors */
+  background: oklch(var(--b2) / 0.2);
+  /* Use Daisy UI primary color for the left border */
+  border-left: 3px solid oklch(var(--p));
 }
 
 .todo-item .badge {
@@ -354,30 +364,30 @@ mark {
   font-weight: 600;
 }
 
-/* Custom Scrollbar */
+/* Custom Scrollbar - use theme colors */
 .table-container::-webkit-scrollbar {
   width: 8px;
 }
 
 .table-container::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.1);
+  background: oklch(var(--b2) / 0.5);
   border-radius: 4px;
 }
 
 .table-container::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.3);
+  background: oklch(var(--b3));
   border-radius: 4px;
 }
 
 .table-container::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.5);
+  background: oklch(var(--bc) / 0.5);
 }
 
-/* Statistics Cards */
+/* Statistics Cards - use Daisy UI colors */
 .stats {
-  background: rgba(255, 255, 255, 0.1);
+  background: oklch(var(--b2) / 0.5);
   border-radius: var(--border-radius);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid oklch(var(--b3) / 0.5);
 }
 
 .stat {
@@ -465,24 +475,16 @@ mark {
   }
 }
 
-/* Dark mode improvements */
-[data-theme="dark"] .container,
-[data-theme="night"] .container {
-  background: rgba(0, 0, 0, 0.2);
-}
+/* Remove dark mode overrides that conflict with Daisy UI themes */
+/* Let Daisy UI handle all theme variations */
 
-[data-theme="dark"] .progress-bar,
-[data-theme="night"] .progress-bar {
-  background: linear-gradient(90deg, #3b82f6, #10b981);
-}
-
-/* Loading States */
+/* Loading States - use theme colors */
 .loading-skeleton {
   background: linear-gradient(
     90deg,
-    rgba(255, 255, 255, 0.1) 25%,
-    rgba(255, 255, 255, 0.2) 50%,
-    rgba(255, 255, 255, 0.1) 75%
+    oklch(var(--b2) / 0.5) 25%,
+    oklch(var(--b3) / 0.7) 50%,
+    oklch(var(--b2) / 0.5) 75%
   );
   background-size: 200% 100%;
   animation: loading 1.5s infinite;
@@ -497,17 +499,17 @@ mark {
   }
 }
 
-/* Accessibility Improvements */
+/* Accessibility Improvements - use theme colors */
 .btn:focus,
 .input:focus {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid oklch(var(--p));
   outline-offset: 2px;
 }
 
-/* Help Modal */
+/* Help Modal - use theme colors */
 .kbd {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: oklch(var(--b3) / 0.5);
+  border: 1px solid oklch(var(--bc) / 0.2);
   border-radius: 6px;
   padding: 4px 8px;
   font-family: "JetBrains Mono", "Fira Code", monospace;
@@ -515,16 +517,16 @@ mark {
   font-weight: 600;
 }
 
-/* Drag and Drop Visual Feedback */
+/* Drag and Drop Visual Feedback - use theme colors */
 .drag-over {
-  background: rgba(var(--color-primary), 0.1);
-  border: 2px dashed var(--color-primary);
+  background: oklch(var(--p) / 0.1);
+  border: 2px dashed oklch(var(--p));
   border-radius: 8px;
 }
 
 .drag-placeholder {
   height: 2px;
-  background: var(--color-primary);
+  background: oklch(var(--p));
   border-radius: 1px;
   margin: 4px 0;
   opacity: 0.7;
@@ -540,23 +542,23 @@ mark {
 }
 
 .btn-group .btn:not(:last-child) {
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  border-right: 1px solid oklch(var(--bc) / 0.1);
 }
 
-/* Status Badges */
+/* Status Badges - use Daisy UI semantic colors */
 .badge-success {
-  background: linear-gradient(135deg, var(--color-success), #059669);
+  background: linear-gradient(135deg, oklch(var(--su)), oklch(var(--su) / 0.8));
 }
 
 .badge-warning {
-  background: linear-gradient(135deg, var(--color-warning), #d97706);
+  background: linear-gradient(135deg, oklch(var(--wa)), oklch(var(--wa) / 0.8));
 }
 
 .badge-info {
   background: linear-gradient(
     135deg,
-    var(--color-primary),
-    var(--color-secondary)
+    oklch(var(--p)),
+    oklch(var(--s))
   );
 }
 
@@ -579,14 +581,14 @@ mark {
   }
 }
 
-/* Enhanced Focus States */
+/* Enhanced Focus States - use theme colors */
 .input:focus-visible,
 .btn:focus-visible {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid oklch(var(--p));
   outline-offset: 2px;
 }
 
-/* Subtask Indentation */
+/* Subtask Indentation - use theme colors */
 .subtask {
   position: relative;
 }
@@ -598,7 +600,7 @@ mark {
   top: 0;
   bottom: 0;
   width: 2px;
-  background: var(--color-primary);
+  background: oklch(var(--p));
   opacity: 0.3;
 }
 
@@ -619,11 +621,11 @@ mark {
   }
 }
 
-/* Empty State Illustration */
+/* Empty State Illustration - use theme colors */
 .empty-state {
   text-align: center;
   padding: 40px 20px;
-  color: rgba(255, 255, 255, 0.6);
+  color: oklch(var(--bc) / 0.6);
 }
 
 .empty-state i {
@@ -632,9 +634,9 @@ mark {
   opacity: 0.5;
 }
 
-/* Search Result Highlighting */
+/* Search Result Highlighting - use theme colors */
 .search-highlight {
-  background: rgba(255, 235, 59, 0.3);
+  background: oklch(var(--wa) / 0.3);
   padding: 2px 4px;
   border-radius: 3px;
   font-weight: 600;
@@ -643,11 +645,11 @@ mark {
 
 @keyframes highlight {
   from {
-    background: rgba(255, 235, 59, 0.8);
+    background: oklch(var(--wa) / 0.8);
     transform: scale(1.05);
   }
   to {
-    background: rgba(255, 235, 59, 0.3);
+    background: oklch(var(--wa) / 0.3);
     transform: scale(1);
   }
 }
@@ -661,7 +663,7 @@ mark {
   contain: layout paint;
 }
 
-/* Print Styles */
+/* Print Styles - make them theme-neutral */
 @media print {
   body {
     background: white !important;
@@ -669,6 +671,7 @@ mark {
 
   .container {
     background: white !important;
+    color: black !important;
     box-shadow: none !important;
     border: 1px solid #ccc !important;
   }
@@ -681,6 +684,7 @@ mark {
 
   .todo-item {
     break-inside: avoid;
+    color: black !important;
   }
 }
 
