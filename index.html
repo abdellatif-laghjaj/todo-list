@@ -32,42 +32,163 @@
             <h1>Todo List</h1>
             <!-- Error message -->
             <div class="alert-message"></div>
+            
+            <!-- Progress Section -->
+            <div class="progress-container mb-4 w-full">
+                <div class="stats stats-horizontal shadow w-full mb-4">
+                    <div class="stat">
+                        <div class="stat-figure text-primary">
+                            <i class="bx bx-task text-2xl"></i>
+                        </div>
+                        <div class="stat-title">Total Tasks</div>
+                        <div class="stat-value text-primary total-counter">0</div>
+                    </div>
+                    
+                    <div class="stat">
+                        <div class="stat-figure text-success">
+                            <i class="bx bx-check-circle text-2xl"></i>
+                        </div>
+                        <div class="stat-title">Completed</div>
+                        <div class="stat-value text-success completed-counter">0</div>
+                    </div>
+                    
+                    <div class="stat">
+                        <div class="stat-figure text-warning">
+                            <i class="bx bx-time text-2xl"></i>
+                        </div>
+                        <div class="stat-title">Pending</div>
+                        <div class="stat-value text-warning pending-counter">0</div>
+                    </div>
+                    
+                    <div class="stat">
+                        <div class="stat-figure text-info">
+                            <i class="bx bx-pie-chart-alt text-2xl"></i>
+                        </div>
+                        <div class="stat-title">Progress</div>
+                        <div class="stat-value text-info percentage-display">0%</div>
+                    </div>
+                </div>
+                
+                <div class="w-full bg-gray-200 rounded-full h-3 mb-4">
+                    <div class="progress-bar bg-primary h-3 rounded-full transition-all duration-500" 
+                         style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+
+            <!-- Input Section -->
             <div class="input-section">
-                <input type="text" placeholder="Add a todo . . ." class="input input-bordered input-secondary w-full max-w-xs" />
-                <input type="date" class="input input-bordered input-secondary w-full max-w-xs schedule-date" />
+                <input type="text" placeholder="Add a todo . . ." 
+                       class="input input-bordered input-secondary w-full max-w-xs" />
+                <input type="date" 
+                       class="input input-bordered input-secondary w-full max-w-xs schedule-date" />
                 <button class="btn btn-secondary add-task-button">
                     <i class="bx bx-plus bx-sm"></i>
                 </button>
             </div>
         </header>
 
-        <div class="todos-filter">
-            <div class="dropdown">
-                <label tabindex="0" class="btn m-1">Filter</label>
-                <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-                    <li onclick="filterTodos('all')"><a>All</a></li>
-                    <li onclick="filterTodos('pending')"><a>Pending</a></li>
-                    <li onclick="filterTodos('completed')"><a>Completed</a></li>
-                </ul>
+        <!-- Search and Filter Section -->
+        <div class="search-filter-section mb-4 w-full">
+            <div class="flex flex-col sm:flex-row gap-4 w-full">
+                <!-- Search Bar -->
+                <div class="flex-1">
+                    <div class="relative">
+                        <input type="text" placeholder="Search tasks... (Ctrl+F)" 
+                               class="input input-bordered w-full pl-10 search-input" />
+                        <i class="bx bx-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                    </div>
+                </div>
+                
+                <!-- Filter Dropdown -->
+                <div class="dropdown">
+                    <label tabindex="0" class="btn btn-outline">
+                        <i class="bx bx-filter mr-2"></i>
+                        Filter
+                    </label>
+                    <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                        <li><a data-filter="all">All Tasks</a></li>
+                        <li><a data-filter="pending">Pending</a></li>
+                        <li><a data-filter="completed">Completed</a></li>
+                    </ul>
+                </div>
             </div>
-            <button class="btn btn-secondary delete-all-btn">
+        </div>
+
+        <div class="todos-filter">
+            <div class="flex gap-2">
+                <div class="dropdown">
+                    <label tabindex="0" class="btn btn-ghost btn-sm">
+                        <i class="bx bx-sort mr-1"></i>
+                        Sort
+                    </label>
+                    <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                        <li><a onclick="todoApp?.uiManager?.handleFilterTodos('all')">All</a></li>
+                        <li><a onclick="todoApp?.uiManager?.handleFilterTodos('pending')">Pending</a></li>
+                        <li><a onclick="todoApp?.uiManager?.handleFilterTodos('completed')">Completed</a></li>
+                    </ul>
+                </div>
+                
+                <button class="btn btn-ghost btn-sm help-btn" title="Keyboard Shortcuts">
+                    <i class="bx bx-help-circle"></i>
+                </button>
+            </div>
+            
+            <button class="btn btn-error delete-all-btn">
+                <i class="bx bx-trash mr-2"></i>
                 Delete All
             </button>
         </div>
 
-         <table class="table w-full">
-            <thead>
-                <tr>
-                    <th>Task</th>
-                    <th>Due Date</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody class="todos-list-body">
-            </tbody>
-        </table>
+         <div class="table-container overflow-x-auto">
+            <table class="table table-zebra w-full">
+                <thead>
+                    <tr>
+                        <th class="w-2/5">Task</th>
+                        <th class="w-1/5">Due Date</th>
+                        <th class="w-1/5">Status</th>
+                        <th class="w-1/5">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="todos-list-body">
+                </tbody>
+            </table>
+        </div>
 
+    </div>
+
+    <!-- Keyboard Shortcuts Help Modal -->
+    <div id="help-modal" class="modal">
+        <div class="modal-box">
+            <h3 class="font-bold text-lg mb-4">
+                <i class="bx bx-keyboard mr-2"></i>
+                Keyboard Shortcuts
+            </h3>
+            <div class="grid grid-cols-1 gap-3">
+                <div class="flex justify-between items-center">
+                    <span>Add new task</span>
+                    <kbd class="kbd kbd-sm">Ctrl + N</kbd>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span>Search tasks</span>
+                    <kbd class="kbd kbd-sm">Ctrl + F</kbd>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span>Show all tasks</span>
+                    <kbd class="kbd kbd-sm">Ctrl + A</kbd>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span>Cancel operation</span>
+                    <kbd class="kbd kbd-sm">Escape</kbd>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span>Add task (from input)</span>
+                    <kbd class="kbd kbd-sm">Enter</kbd>
+                </div>
+            </div>
+            <div class="modal-action">
+                <button class="btn btn-ghost close-help-modal">Close</button>
+            </div>
+        </div>
     </div>
 
     <!--Theme switcher-->
